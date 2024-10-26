@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F414001C2CCD18CA005F94C1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F414001B2CCD18CA005F94C1 /* SnapKit */; };
-		F44408762CCD24DB001040FD /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F44408752CCD24DB001040FD /* CombineMoya */; };
-		F44408782CCD24DC001040FD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F44408772CCD24DC001040FD /* Moya */; };
-		F444087A2CCD24DC001040FD /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F44408792CCD24DC001040FD /* ReactiveMoya */; };
 		F444087D2CCD25A6001040FD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F444087C2CCD25A6001040FD /* Kingfisher */; };
+		F44408A22CCD6EF5001040FD /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F44408A12CCD6EF5001040FD /* CombineMoya */; };
+		F44408A42CCD6EF5001040FD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F44408A32CCD6EF5001040FD /* Moya */; };
+		F44408A72CCD6FA2001040FD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F44408A62CCD6FA2001040FD /* SnapKit */; };
 		F4E8BB7E2CCD21630007B2D9 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F4E8BB7D2CCD21630007B2D9 /* Swinject */; };
 /* End PBXBuildFile section */
 
@@ -46,11 +45,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F444087D2CCD25A6001040FD /* Kingfisher in Frameworks */,
-				F414001C2CCD18CA005F94C1 /* SnapKit in Frameworks */,
 				F4E8BB7E2CCD21630007B2D9 /* Swinject in Frameworks */,
-				F44408782CCD24DC001040FD /* Moya in Frameworks */,
-				F444087A2CCD24DC001040FD /* ReactiveMoya in Frameworks */,
-				F44408762CCD24DB001040FD /* CombineMoya in Frameworks */,
+				F44408A42CCD6EF5001040FD /* Moya in Frameworks */,
+				F44408A22CCD6EF5001040FD /* CombineMoya in Frameworks */,
+				F44408A72CCD6FA2001040FD /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,13 +92,11 @@
 			);
 			name = FoodDelivery;
 			packageProductDependencies = (
-				F414001B2CCD18CA005F94C1 /* SnapKit */,
-				F414001D2CCD18CA005F94C1 /* SnapKit-Dynamic */,
 				F4E8BB7D2CCD21630007B2D9 /* Swinject */,
-				F44408752CCD24DB001040FD /* CombineMoya */,
-				F44408772CCD24DC001040FD /* Moya */,
-				F44408792CCD24DC001040FD /* ReactiveMoya */,
 				F444087C2CCD25A6001040FD /* Kingfisher */,
+				F44408A12CCD6EF5001040FD /* CombineMoya */,
+				F44408A32CCD6EF5001040FD /* Moya */,
+				F44408A62CCD6FA2001040FD /* SnapKit */,
 			);
 			productName = FoodDelivery;
 			productReference = F4E8CA992CC6C64100D31919 /* FoodDelivery.app */;
@@ -131,10 +127,10 @@
 			mainGroup = F4E8CA902CC6C64100D31919;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F4E8BB7C2CCD21630007B2D9 /* XCRemoteSwiftPackageReference "Swinject" */,
-				F44408742CCD24DB001040FD /* XCRemoteSwiftPackageReference "Moya" */,
 				F444087B2CCD25A6001040FD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F44408A02CCD6EF5001040FD /* XCRemoteSwiftPackageReference "Moya" */,
+				F44408A52CCD6FA2001040FD /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F4E8CA9A2CC6C64100D31919 /* Products */;
@@ -386,15 +382,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		F444087B2CCD25A6001040FD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
+				minimumVersion = 8.1.0;
 			};
 		};
-		F44408742CCD24DB001040FD /* XCRemoteSwiftPackageReference "Moya" */ = {
+		F44408A02CCD6EF5001040FD /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
@@ -402,12 +398,12 @@
 				minimumVersion = 15.0.3;
 			};
 		};
-		F444087B2CCD25A6001040FD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		F44408A52CCD6FA2001040FD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.1.0;
+				minimumVersion = 5.7.1;
 			};
 		};
 		F4E8BB7C2CCD21630007B2D9 /* XCRemoteSwiftPackageReference "Swinject" */ = {
@@ -421,35 +417,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F414001B2CCD18CA005F94C1 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		F414001D2CCD18CA005F94C1 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
-		F44408752CCD24DB001040FD /* CombineMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F44408742CCD24DB001040FD /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = CombineMoya;
-		};
-		F44408772CCD24DC001040FD /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F44408742CCD24DB001040FD /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-		F44408792CCD24DC001040FD /* ReactiveMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F44408742CCD24DB001040FD /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = ReactiveMoya;
-		};
 		F444087C2CCD25A6001040FD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F444087B2CCD25A6001040FD /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F44408A12CCD6EF5001040FD /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F44408A02CCD6EF5001040FD /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		F44408A32CCD6EF5001040FD /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F44408A02CCD6EF5001040FD /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		F44408A62CCD6FA2001040FD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F44408A52CCD6FA2001040FD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		F4E8BB7D2CCD21630007B2D9 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
