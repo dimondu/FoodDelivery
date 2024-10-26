@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F414001C2CCD18CA005F94C1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F414001B2CCD18CA005F94C1 /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F4E8CA992CC6C64100D31919 /* FoodDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F414001C2CCD18CA005F94C1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +84,8 @@
 			);
 			name = FoodDelivery;
 			packageProductDependencies = (
+				F414001B2CCD18CA005F94C1 /* SnapKit */,
+				F414001D2CCD18CA005F94C1 /* SnapKit-Dynamic */,
 			);
 			productName = FoodDelivery;
 			productReference = F4E8CA992CC6C64100D31919 /* FoodDelivery.app */;
@@ -108,6 +115,9 @@
 			);
 			mainGroup = F4E8CA902CC6C64100D31919;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F4E8CA9A2CC6C64100D31919 /* Products */;
 			projectDirPath = "";
@@ -356,6 +366,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F414001B2CCD18CA005F94C1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		F414001D2CCD18CA005F94C1 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4E8CA912CC6C64100D31919 /* Project object */;
 }
