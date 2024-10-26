@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F414001C2CCD18CA005F94C1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F414001B2CCD18CA005F94C1 /* SnapKit */; };
+		F4E8BB7E2CCD21630007B2D9 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F4E8BB7D2CCD21630007B2D9 /* Swinject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F414001C2CCD18CA005F94C1 /* SnapKit in Frameworks */,
+				F4E8BB7E2CCD21630007B2D9 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,7 @@
 			packageProductDependencies = (
 				F414001B2CCD18CA005F94C1 /* SnapKit */,
 				F414001D2CCD18CA005F94C1 /* SnapKit-Dynamic */,
+				F4E8BB7D2CCD21630007B2D9 /* Swinject */,
 			);
 			productName = FoodDelivery;
 			productReference = F4E8CA992CC6C64100D31919 /* FoodDelivery.app */;
@@ -117,6 +120,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F4E8BB7C2CCD21630007B2D9 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F4E8CA9A2CC6C64100D31919 /* Products */;
@@ -376,6 +380,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		F4E8BB7C2CCD21630007B2D9 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -388,6 +400,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F414001A2CCD18CA005F94C1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		F4E8BB7D2CCD21630007B2D9 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E8BB7C2CCD21630007B2D9 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
