@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-	private var appCoordinator: ICoordinator!
+	private var appCoordinator: ICoordinator?
 
     func scene(
         _ scene: UIScene,
@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 			window: window,
 			navigationController: UINavigationController()
 		)
-		appCoordinator.start()
+		appCoordinator?.start()
 
         self.window = window
     }

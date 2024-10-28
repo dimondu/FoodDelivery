@@ -24,7 +24,8 @@ final class AppCoordinator: BaseCoordinator {
 		runMainFlow()
 	}
 
-	func runMainFlow() {
+	// MARK: - Private methods
+	private func runMainFlow() {
 		let tabBarController = TabBarController()
 		let coordinator = MainCoordinator(
 			tabBarController: tabBarController,

@@ -22,7 +22,8 @@ final class ShoppingCartCoordinator: ICoordinator {
 		showShoppingCartScene()
 	}
 
-	func showShoppingCartScene() {
+	// MARK: - Private methods
+	private func showShoppingCartScene() {
 		let viewcontroller = ShoppingCartViewController()
 		navigationController.pushViewController(viewcontroller, animated: true)
 	}

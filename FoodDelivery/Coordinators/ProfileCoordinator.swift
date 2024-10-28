@@ -22,7 +22,8 @@ final class ProfileCoordinator: ICoordinator {
 		showProfileScene()
 	}
 
-	func showProfileScene() {
+	// MARK: - Private methods
+	private func showProfileScene() {
 		let viewcontroller = ProfileViewController()
 		navigationController.pushViewController(viewcontroller, animated: true)
 	}

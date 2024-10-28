@@ -24,9 +24,7 @@ class BaseCoordinator: ICoordinator {
 	/// - Parameter coordinator: Зависимость, которую необходимо добавить.
 	func addDependency(_ coordinator: ICoordinator) {
 
-		guard !childCoordinators.contains(where: { $0 === coordinator }) else {
-			return
-		}
+		guard !childCoordinators.contains(where: { $0 === coordinator }) else { return }
 
 		childCoordinators.append(coordinator)
 	}
@@ -47,9 +45,7 @@ class BaseCoordinator: ICoordinator {
 
 		if let coordinator = coordinator as? BaseCoordinator, !coordinator.childCoordinators.isEmpty {
 			coordinator.childCoordinators.forEach(removeDependency)
-		}
-
-		if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
+		} else if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
 			childCoordinators.remove(at: index)
 		}
 	}
