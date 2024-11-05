@@ -12,81 +12,84 @@ import UIKit
  Для реализации каждого экрана нужно подписываться под них.
  */
 
-/// Технический протокол для обслуживания, напрямую его использовать не нужно, он не понадобится.
+/// Технический протокол для обслуживания, напрямую его использовать не нужно,
+/// он не понадобится.
 protocol HasEmptyInitialization {
     init()
 }
 
 /// Конструктор всех частей архитектуры в единую сущность.
 protocol ScreenBuilder: HasEmptyInitialization {
-    
-    associatedtype VC: UIViewController & ViewType
-    
+
+    associatedtype ViewController: UIViewController & ViewType
+
     /// Здесь передаем все зависимости экрана.
-    var dependencies: VC.ViewModel.Dependencies { get }
+    var dependencies: ViewController.ViewModel.Dependencies { get }
 }
 
 extension ScreenBuilder {
-    
-    /// Здесь создается контроллер, модель и роутер, и связываются друг с другом.
+
+    /// Здесь создается контроллер, модель и роутер, и связываются друг с
+    /// другом.
     func build(
-        _ inputs: VC.ViewModel.Inputs
-    ) -> VC where VC.ViewModel.Routes.TransitionHandler == UIViewController
-    {
-        
-        let vc = VC.make()
-        vc.loadViewIfNeeded()
-        
-        let vm = VC.ViewModel.configure(
+        _ inputs: ViewController.ViewModel.Inputs
+    ) -> ViewController where ViewController.ViewModel.Routes.TransitionHandler == UIViewController {
+
+        let viewController = ViewController.make()
+        viewController.loadViewIfNeeded()
+
+        let viewModel = ViewController.ViewModel.configure(
             input: inputs,
-            binding: vc.bindings,
+            binding: viewController.bindings,
             dependency: dependencies,
-            router: VC.ViewModel.Routes(transitionHandler: vc)
+            router: ViewController.ViewModel.Routes(transitionHandler: viewController)
         )
-        
-        vc.bind(to: vm)
-        
-        return vc
+
+        viewController.bind(to: viewModel)
+
+        return viewController
     }
 }
 
 /// Протокол, под который подписывается контроллер.
 protocol ViewType: HasEmptyInitialization {
-    
+
     associatedtype ViewModel: ViewModelType
-    
+
     /// Здесь передаем все состояния и события из контроллера в модель.
     var bindings: ViewModel.Bindings { get }
-    
+
     /// Здесь происходит привязка состояний модели к экрану.
     func bind(to viewModel: ViewModel)
-    
+
     static func make() -> Self
 }
 
 extension ViewType {
-    
+
     static func make() -> Self {
-        return Self.init()
+        Self()
     }
 }
 
 /// Протокол, под который подписывается модель.
 protocol ViewModelType {
-    
+
     /// Содержит данные, приходящие извне, например, с предыдущего экрана.
     associatedtype Inputs = Void
-    
-    /// Содержит данные и события, приходящие из контроллера, например, нажатия на кнопки.
+
+    /// Содержит данные и события, приходящие из контроллера, например, нажатия
+    /// на кнопки.
     associatedtype Bindings = Void
-    
+
     /// Содержит зависимости, например, сетевой слой, хранилище и т.д.
     associatedtype Dependencies = Void
-    
+
     /// Тип роутера, если экран никуда не ведет далее — то пустой.
     associatedtype Routes: RouterType = EmptyRouter
-    
-    /// Здесь происходит трансформация всех входных данных, и возвращается модель.
+
+    /// Здесь происходит трансформация всех входных данных, и возвращается
+    /// модель.
     static func configure(
         input: Inputs,
         binding: Bindings,
@@ -97,9 +100,9 @@ protocol ViewModelType {
 
 /// Протокол, под который подписывается роутер.
 protocol RouterType {
-    
+
     associatedtype TransitionHandler
-    
+
     init(transitionHandler: TransitionHandler)
 }
 

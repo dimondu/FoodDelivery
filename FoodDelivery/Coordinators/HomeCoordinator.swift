@@ -24,7 +24,8 @@ final class HomeCoordinator: ICoordinator {
 
 	// MARK: - Private methods
 	private func showHomeScene() {
-		let viewcontroller = HomeViewController()
+//		let viewcontroller = HomeViewController()
+        let viewcontroller = ExampleUsersScreenBuilder().build(.init())
 		navigationController.pushViewController(viewcontroller, animated: true)
 	}
 }
