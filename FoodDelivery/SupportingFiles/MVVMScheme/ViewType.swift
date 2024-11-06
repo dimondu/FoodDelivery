@@ -6,9 +6,9 @@
 //
 
 /// Протокол, под который подписывается контроллер.
-protocol ViewType: HasEmptyInitialization {
+protocol IViewType: IHasEmptyInitialization {
 
-    associatedtype ViewModel: ViewModelType
+    associatedtype ViewModel: IViewModelType
 
     /// Здесь передаем все состояния и события из контроллера в модель.
     var bindings: ViewModel.Bindings { get }
@@ -19,7 +19,7 @@ protocol ViewType: HasEmptyInitialization {
     static func make() -> Self
 }
 
-extension ViewType {
+extension IViewType {
 
     static func make() -> Self {
         Self()

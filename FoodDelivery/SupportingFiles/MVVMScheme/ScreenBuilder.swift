@@ -9,20 +9,20 @@ import UIKit
 
 /// Технический протокол для обслуживания, напрямую его использовать не нужно,
 /// он не понадобится.
-protocol HasEmptyInitialization {
+protocol IHasEmptyInitialization {
     init()
 }
 
 /// Конструктор всех частей архитектуры в единую сущность.
-protocol ScreenBuilder: HasEmptyInitialization {
+protocol IScreenBuilder: IHasEmptyInitialization {
 
-    associatedtype ViewController: UIViewController & ViewType
+    associatedtype ViewController: UIViewController & IViewType
 
     /// Здесь передаем все зависимости экрана.
     var dependencies: ViewController.ViewModel.Dependencies { get }
 }
 
-extension ScreenBuilder {
+extension IScreenBuilder {
 
     /// Здесь создается контроллер, модель и роутер, и связываются друг с
     /// другом.

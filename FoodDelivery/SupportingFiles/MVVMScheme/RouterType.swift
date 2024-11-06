@@ -8,7 +8,7 @@
 import UIKit
 
 /// Протокол, под который подписывается роутер.
-protocol RouterType {
+protocol IRouterType {
 
     associatedtype TransitionHandler
 
@@ -16,6 +16,6 @@ protocol RouterType {
 }
 
 /// Пустой роутер для экранов без навигации.
-final class EmptyRouter: RouterType {
+final class EmptyRouter: IRouterType {
     required init(transitionHandler: UIViewController) {}
 }

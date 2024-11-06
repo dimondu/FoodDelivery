@@ -6,7 +6,7 @@
 //
 
 /// Протокол, под который подписывается модель.
-protocol ViewModelType {
+protocol IViewModelType {
 
     /// Содержит данные, приходящие извне, например, с предыдущего экрана.
     associatedtype Inputs = Void
@@ -19,7 +19,7 @@ protocol ViewModelType {
     associatedtype Dependencies = Void
 
     /// Тип роутера, если экран никуда не ведет далее — то пустой.
-    associatedtype Routes: RouterType = EmptyRouter
+    associatedtype Routes: IRouterType = EmptyRouter
 
     /// Здесь происходит трансформация всех входных данных, и возвращается
     /// модель.
