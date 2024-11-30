@@ -15,21 +15,22 @@ extension Assembler {
             }
             return assembler ?? Assembler()
         }
-    
+
         set {
             assembler = newValue
         }
     }
 
     static var assembler: Assembler?
-    
-   private static func buildAssembler() -> Assembler {
+
+    private static func buildAssembler() -> Assembler {
         Assembler(allAssemblies)
     }
 
-   private static var allAssemblies: [Assembly] {
+    private static var allAssemblies: [Assembly] {
         [
-           // Сюда добавлять Assembly модулей
+            CategoriesServiceAssembly()
+            // Сюда добавлять Assembly модулей
         ]
     }
 }

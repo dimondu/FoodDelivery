@@ -7,6 +7,10 @@
 
 struct HomeScreenBuilder: IScreenBuilder {
     typealias ViewController = HomeViewController
-    
-    
+
+    @Inject var categoriesService: CategoriesService
+
+    var dependencies: HomeViewModel.Dependencies {
+        .init(categoriesService: categoriesService)
+    }
 }

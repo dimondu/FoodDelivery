@@ -22,6 +22,12 @@ protocol IViewType: IHasEmptyInitialization {
 extension IViewType {
 
     static func make() -> Self {
-        Self()
+        .init()
+    }
+}
+
+extension IViewType where ViewModel.Bindings == Void {
+    var bindings: Void {
+        return ()
     }
 }

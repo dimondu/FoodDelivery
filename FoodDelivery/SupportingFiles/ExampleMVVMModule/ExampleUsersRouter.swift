@@ -9,10 +9,10 @@ import UIKit
 
 struct ExampleUsersRouter: IRouterType {
 
-    let viewController: UIViewController
+    private let router: Router
 
     init(transitionHandler: UIViewController) {
-        viewController = transitionHandler
+        router = Router(transitionHandler: transitionHandler)
     }
 
     func showAlert(title: String) {
@@ -25,6 +25,6 @@ struct ExampleUsersRouter: IRouterType {
 
         alertController.addAction(.init(title: "OK", style: .default))
 
-        viewController.present(alertController, animated: true)
+        router.present(alertController, animated: true)
     }
 }

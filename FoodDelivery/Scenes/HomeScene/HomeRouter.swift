@@ -8,10 +8,9 @@
 import UIKit
 
 struct HomeRouter: IRouterType {
-    
-    let viewController: UIViewController
-    
+    private let router: Router
+
     init(transitionHandler: UIViewController) {
-        viewController = transitionHandler
+        router = Router(transitionHandler: transitionHandler)
     }
 }

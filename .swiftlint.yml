@@ -119,7 +119,7 @@ file_length:
 
 # настройка названия типа
 type_name:
-  min_length: 3 # only warning
+  min_length: 2 # only warning
   max_length: # warning and error
     warning: 40
     error: 50
@@ -128,8 +128,7 @@ type_name:
 
 # настройка названия переменной
 identifier_name:
-  min_length: # only min_length
-    error: 2 # only error
+  min_length: 2 # only min_length
   excluded: # excluded via string array
     - x
     - y
