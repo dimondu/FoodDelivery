@@ -27,10 +27,9 @@ extension IScreenBuilder {
     /// Здесь создается контроллер, модель и роутер, и связываются друг с
     /// другом.
     func build(
+        coordinator: ViewController.ViewModel.Coordinates,
         _ inputs: ViewController.ViewModel.Inputs
-    ) -> ViewController
-        where ViewController.ViewModel.Routes
-        .TransitionHandler == UIViewController {
+    ) -> ViewController {
 
         let viewController = ViewController.make()
         viewController.loadViewIfNeeded()
@@ -39,8 +38,7 @@ extension IScreenBuilder {
             input: inputs,
             binding: viewController.bindings,
             dependency: dependencies,
-            router: ViewController.ViewModel
-                .Routes(transitionHandler: viewController)
+            coordinator: coordinator
         )
 
         viewController.bind(to: viewModel)

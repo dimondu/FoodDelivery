@@ -158,7 +158,6 @@ private extension HomeCategoryTableViewCell {
         static let halMargin = CGFloat(8)
         static let imageMargin = CGFloat(28)
         static let imageHeight = CGFloat(210)
-        
     }
 }
 

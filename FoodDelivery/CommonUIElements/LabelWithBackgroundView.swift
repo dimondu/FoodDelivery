@@ -29,7 +29,7 @@ final class LabelWithBackgroundView: UIView {
     var padding: UIEdgeInsets?
 
     // MARK: - Private properties
-    
+
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center

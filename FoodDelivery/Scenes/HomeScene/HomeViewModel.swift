@@ -15,7 +15,7 @@ struct HomeViewModel {
 }
 
 extension HomeViewModel: IViewModelType {
-    typealias Routes = HomeRouter
+    typealias Coordinates = HomeCoordinator
 
     struct Bindings {
         let didTapCell: AnyPublisher<HomeCategoryTableViewCellModel, Never>
@@ -30,7 +30,7 @@ extension HomeViewModel: IViewModelType {
         input: Inputs,
         binding: Bindings,
         dependency: Dependencies,
-        router: HomeRouter
+        coordinator: Coordinates
     ) -> HomeViewModel {
 
         let cellModels = CurrentValueSubject<
@@ -51,8 +51,8 @@ extension HomeViewModel: IViewModelType {
 
         let showDishesScene = binding.didTapCell
             .map(\.id)
-            .sink {
-                print("Тут должен быть метод роутера с переходом на подкатегорию, которая относится к категории \($0)")
+            .sink { _ in
+                coordinator.showDishListScene()
             }
 
         return .init(

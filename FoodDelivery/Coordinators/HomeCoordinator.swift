@@ -23,8 +23,12 @@ final class HomeCoordinator: ICoordinator {
 	}
 
 	// MARK: - Private methods
-	private func showHomeScene() {
-        let viewcontroller = HomeScreenBuilder().build(())
-		navigationController.pushViewController(viewcontroller, animated: true)
-	}
+    private func showHomeScene() {
+        let viewcontroller = HomeScreenBuilder().build(coordinator: self, ())
+        navigationController.pushViewController(viewcontroller, animated: true)
+    }
+
+    func showDishListScene() {
+        print("Показ экрана со списком блюд")
+    }
 }

@@ -19,7 +19,7 @@ protocol IViewModelType {
     associatedtype Dependencies = Void
 
     /// Тип роутера, если экран никуда не ведет далее — то пустой.
-    associatedtype Routes: IRouterType = EmptyRouter
+    associatedtype Coordinates = ICoordinator
 
     /// Здесь происходит трансформация всех входных данных, и возвращается
     /// модель.
@@ -27,6 +27,6 @@ protocol IViewModelType {
         input: Inputs,
         binding: Bindings,
         dependency: Dependencies,
-        router: Routes
+        coordinator: Coordinates
     ) -> Self
 }

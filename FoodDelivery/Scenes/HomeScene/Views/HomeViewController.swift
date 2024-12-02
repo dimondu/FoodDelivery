@@ -62,12 +62,12 @@ extension HomeViewController: IViewType {
         viewModel.cancellables
             .forEach { $0.store(in: &cancellables) }
     }
-    
+
     func layoutUI() {
         homeView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
