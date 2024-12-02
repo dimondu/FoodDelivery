@@ -9,8 +9,7 @@ import UIKit
 
 extension UIImage {
 
-    func resize(for height: CGFloat) -> UIImage {
-
+    func resize(_ height: CGFloat) -> UIImage {
         let heightRatio = height / size.height
 
         let newSize = CGSize(
@@ -19,14 +18,14 @@ extension UIImage {
         )
 
         let rect = CGRect(
-            x: 0,
-            y: 0,
+            x: .zero,
+            y: .zero,
             width: newSize.width,
             height: newSize.height
         )
 
         let format = UIGraphicsImageRendererFormat()
-        format.scale = 0
+        format.scale = .zero
         format.opaque = false
 
         return UIGraphicsImageRenderer(size: newSize, format: format)

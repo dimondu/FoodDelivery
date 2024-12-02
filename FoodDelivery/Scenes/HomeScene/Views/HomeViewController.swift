@@ -10,10 +10,7 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
-    private let didTapCell = PassthroughSubject<
-        HomeCategoryTableViewCellModel,
-        Never
-    >()
+    private let didTapCell = PassthroughSubject<HomeCategoryTableViewCellModel, Never>()
     private var cancellables = Set<AnyCancellable>()
 
     private lazy var homeView = HomeView().setup {
@@ -30,13 +27,7 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        homeView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-
-        activityIndicator.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        layoutUI()
     }
 
     override func viewIsAppearing(_ animated: Bool) {
@@ -70,5 +61,15 @@ extension HomeViewController: IViewType {
 
         viewModel.cancellables
             .forEach { $0.store(in: &cancellables) }
+    }
+    
+    func layoutUI() {
+        homeView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }

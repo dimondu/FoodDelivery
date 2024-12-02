@@ -18,26 +18,20 @@ final class HomeView: UIView {
 
     private lazy var tableView = UITableView().setup {
         $0.register(HomeCategoryTableViewCell.self)
-        $0.sectionHeaderTopPadding = 0
-        let tableColor = UIColor(
-            red: 251 / 255,
-            green: 242 / 255,
-            blue: 240 / 255,
-            alpha: 1
-        )
-        $0.backgroundColor = tableColor
+        $0.sectionHeaderTopPadding = .zero
+        $0.backgroundColor = Constants.backgroundColor
         $0.delegate = self
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
 
         let headerView = UIView(frame: CGRect(
-            x: 0,
-            y: 0,
+            x: .zero,
+            y: .zero,
             width: $0.frame.width,
-            height: 28
+            height: Constants.headerViewHeight
         ))
-        headerView.backgroundColor = tableColor
-        headerView.layer.cornerRadius = 16
+        headerView.backgroundColor = Constants.backgroundColor
+        headerView.layer.cornerRadius = Constants.headerViewCornerRadius
         headerView.layer.maskedCorners = [
             .layerMinXMinYCorner,
             .layerMaxXMinYCorner
@@ -48,10 +42,7 @@ final class HomeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupDataSource()
-        addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        layoutUI()
     }
 
     private func setupDataSource() {
@@ -76,9 +67,29 @@ final class HomeView: UIView {
             Int,
             HomeCategoryTableViewCellModel
         >()
-        snapshot.appendSections([0])
-        snapshot.appendItems(cellModels, toSection: 0)
+        snapshot.appendSections([Constants.section])
+        snapshot.appendItems(cellModels, toSection: Constants.section)
         dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+
+    private func layoutUI() {
+        addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
+    private enum Constants {
+        static let section = 0
+        static let backgroundColor = UIColor(
+            red: 251 / 255,
+            green: 242 / 255,
+            blue: 240 / 255,
+            alpha: 1
+        )
+        static let headerViewHeight = CGFloat(28)
+        static let headerViewCornerRadius = CGFloat(16)
+        static let cellHeight = CGFloat(308)
     }
 }
 
@@ -95,6 +106,6 @@ extension HomeView: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        308
+        Constants.cellHeight
     }
 }

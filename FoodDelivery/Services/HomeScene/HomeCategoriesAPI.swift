@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  HomeCategoriesAPI.swift
 //  FoodDelivery
 //
 //  Created by Александр Николаев on 28.11.2024.
@@ -10,11 +10,11 @@ import CombineMoya
 import Foundation
 import Moya
 
-enum API {
+enum HomeCategoriesAPI {
     case fetchCategories
 }
 
-extension API: TargetType {
+extension HomeCategoriesAPI: TargetType {
     var baseURL: URL {
         URL(string: "http://127.0.0.1:8080")! // swiftlint:disable:this force_unwrapping
     }

@@ -28,7 +28,7 @@ final class HomeCategoryTableViewCell: UITableViewCell {
     }
 }
 
-extension HomeCategoryTableViewCell: ICellType {
+extension HomeCategoryTableViewCell: ICell {
     typealias CellModel = HomeCategoryTableViewCellModel
 
     func configure(with model: CellModel) {

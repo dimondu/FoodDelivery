@@ -29,7 +29,8 @@ extension Assembler {
 
     private static var allAssemblies: [Assembly] {
         [
-            CategoriesServiceAssembly()
+            HomeCategoriesServiceAssembly(),
+            HomeSceneMapperAssembly()
             // Сюда добавлять Assembly модулей
         ]
     }

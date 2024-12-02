@@ -8,9 +8,10 @@
 struct HomeScreenBuilder: IScreenBuilder {
     typealias ViewController = HomeViewController
 
-    @Inject var categoriesService: CategoriesService
+    @Inject var homeCategoriesService: HomeCategoriesService
+    @Inject var homeSceneMapper: HomeSceneMapper
 
     var dependencies: HomeViewModel.Dependencies {
-        .init(categoriesService: categoriesService)
+        .init(homeCategoriesService: homeCategoriesService, homeSceneMapper: homeSceneMapper)
     }
 }

@@ -22,7 +22,8 @@ extension HomeViewModel: IViewModelType {
     }
 
     struct Dependencies {
-        let categoriesService: CategoriesService
+        let homeCategoriesService: IHomeCategoriesService
+        let homeSceneMapper: IHomeSceneMapper
     }
 
     static func configure(
@@ -37,19 +38,10 @@ extension HomeViewModel: IViewModelType {
             Never
         >([])
 
-        let fetchCategories = dependency.categoriesService
+        let fetchCategories = dependency.homeCategoriesService
             .fetchCategories()
             .map {
-                $0.map { HomeCategoryTableViewCellModel(
-                    id: $0.id,
-                    imageUrl: $0.image,
-                    title: $0.title,
-                    numberOfRatings: $0.ratingsCount,
-                    rating: $0.stars,
-                    priceStartsAt: $0.priceStartsAt,
-                    promotionalOffer: $0.promotionalOffer
-                )
-                }
+                $0.map(dependency.homeSceneMapper.map)
             }
             .sink(receiveValue: { cellModels.send($0) })
 

@@ -21,7 +21,7 @@ final class LabelWithBackgroundView: UIView {
 
     var cornerRadius: CGFloat? {
         didSet {
-            self.layer.cornerRadius = cornerRadius ?? 0
+            self.layer.cornerRadius = cornerRadius ?? .zero
         }
     }
     var font: UIFont?

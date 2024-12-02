@@ -58,7 +58,7 @@ private extension TabBarController {
         navigationController.tabBarItem = UITabBarItem(
             title: nil,
             image: page.pageIconValue()
-                .resize(for: 28)
+                .resize(32)
                 .withRenderingMode(.alwaysOriginal),
             tag: page.pageOrderNumber
         )
