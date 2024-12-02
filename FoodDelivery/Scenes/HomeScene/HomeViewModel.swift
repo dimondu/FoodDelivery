@@ -9,7 +9,7 @@ import Combine
 import Moya
 
 struct HomeViewModel {
-    let cellModels: AnyPublisher<[CategoryTableViewCellModel], Never>
+    let cellModels: AnyPublisher<[HomeCategoryTableViewCellModel], Never>
     let isLoading: AnyPublisher<Bool, Never>
     let cancellables: [AnyCancellable]
 }
@@ -18,7 +18,7 @@ extension HomeViewModel: IViewModelType {
     typealias Routes = HomeRouter
 
     struct Bindings {
-        let didTapCell: AnyPublisher<CategoryTableViewCellModel, Never>
+        let didTapCell: AnyPublisher<HomeCategoryTableViewCellModel, Never>
     }
 
     struct Dependencies {
@@ -33,14 +33,14 @@ extension HomeViewModel: IViewModelType {
     ) -> HomeViewModel {
 
         let cellModels = CurrentValueSubject<
-            [CategoryTableViewCellModel],
+            [HomeCategoryTableViewCellModel],
             Never
         >([])
 
         let fetchCategories = dependency.categoriesService
             .fetchCategories()
             .map {
-                $0.map { CategoryTableViewCellModel(
+                $0.map { HomeCategoryTableViewCellModel(
                     id: $0.id,
                     imageUrl: $0.image,
                     title: $0.title,

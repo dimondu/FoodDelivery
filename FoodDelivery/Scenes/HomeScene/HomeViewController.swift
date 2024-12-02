@@ -11,7 +11,7 @@ import UIKit
 final class HomeViewController: UIViewController {
 
     private let didTapCell = PassthroughSubject<
-        CategoryTableViewCellModel,
+        HomeCategoryTableViewCellModel,
         Never
     >()
     private var cancellables = Set<AnyCancellable>()

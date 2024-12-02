@@ -123,7 +123,9 @@ type_name:
   max_length: # warning and error
     warning: 40
     error: 50
-  excluded: iPhone # excluded via string
+  excluded:
+    - iPhone # excluded via string
+    - UI
   allowed_symbols: ["_"] # these are allowed in type names
 
 # настройка названия переменной
@@ -134,6 +136,7 @@ identifier_name:
     - y
     - z
     - id
+    - ui
 
 # настройка уровня вложения
 nesting:

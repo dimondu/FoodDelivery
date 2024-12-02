@@ -12,12 +12,12 @@ final class HomeView: UIView {
 
     private var dataSource: UITableViewDiffableDataSource<
         Int,
-        CategoryTableViewCellModel
+        HomeCategoryTableViewCellModel
     >?
-    var didTapCell: ((CategoryTableViewCellModel) -> Void)?
+    var didTapCell: ((HomeCategoryTableViewCellModel) -> Void)?
 
     private lazy var tableView = UITableView().setup {
-        $0.register(CategoryTableViewCell.self)
+        $0.register(HomeCategoryTableViewCell.self)
         $0.sectionHeaderTopPadding = 0
         let tableColor = UIColor(
             red: 251 / 255,
@@ -57,24 +57,24 @@ final class HomeView: UIView {
     private func setupDataSource() {
         dataSource = UITableViewDiffableDataSource<
             Int,
-            CategoryTableViewCellModel
+            HomeCategoryTableViewCellModel
         >(
             tableView: tableView
         ) { tableView, indexPath, cellModel in
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: CategoryTableViewCell.identifier,
+                withIdentifier: HomeCategoryTableViewCell.identifier,
                 for: indexPath
-            ) as? CategoryTableViewCell
+            ) as? HomeCategoryTableViewCell
             cell?.configure(with: cellModel)
             cell?.selectionStyle = .none
             return cell
         }
     }
 
-    func updateDataSource(with cellModels: [CategoryTableViewCellModel]) {
+    func updateDataSource(with cellModels: [HomeCategoryTableViewCellModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<
             Int,
-            CategoryTableViewCellModel
+            HomeCategoryTableViewCellModel
         >()
         snapshot.appendSections([0])
         snapshot.appendItems(cellModels, toSection: 0)
