@@ -16,11 +16,11 @@ enum TabbarPage: CaseIterable {
 		var image: UIImage?
 		switch self {
 		case .profile:
-			image = UIImage(systemName: "person.circle")
+            image = UIImage(named: "person")
 		case .home:
-			image = UIImage(systemName: "house.circle")
+            image = UIImage(named: "home")
 		case .shoppingCart:
-			image = UIImage(systemName: "cart.circle")
+            image = UIImage(named: "shopping_cart")
 		}
 		return image ?? .actions
 	}
