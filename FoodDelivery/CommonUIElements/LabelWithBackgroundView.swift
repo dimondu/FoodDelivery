@@ -45,9 +45,7 @@ final class LabelWithBackgroundView: UIView {
 
     override func layoutSubviews() {
         self.clipsToBounds = true
-        label.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(padding ?? .zero)
-        }
+        setupConstraints()
     }
 
     override var intrinsicContentSize: CGSize {
@@ -58,5 +56,11 @@ final class LabelWithBackgroundView: UIView {
             height: labelSize.height + padding.top + padding.bottom
         )
         return size
+    }
+
+    private func setupConstraints() {
+        label.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(padding ?? .zero)
+        }
     }
 }

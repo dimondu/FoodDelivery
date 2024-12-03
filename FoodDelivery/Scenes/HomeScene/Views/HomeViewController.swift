@@ -27,7 +27,7 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layoutUI()
+        setupLayoutUI()
     }
 
     override func viewIsAppearing(_ animated: Bool) {
@@ -63,7 +63,7 @@ extension HomeViewController: IViewType {
             .forEach { $0.store(in: &cancellables) }
     }
 
-    func layoutUI() {
+    func setupLayoutUI() {
         homeView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

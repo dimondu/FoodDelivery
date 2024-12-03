@@ -9,11 +9,7 @@ import Combine
 import UIKit
 
 final class HomeView: UIView {
-
-    private var dataSource: UITableViewDiffableDataSource<
-        Int,
-        HomeCategoryTableViewCellModel
-    >?
+    private var dataSource: UITableViewDiffableDataSource<Int, HomeCategoryTableViewCellModel>?
     var didTapCell: ((HomeCategoryTableViewCellModel) -> Void)?
 
     private lazy var tableView = UITableView().setup {
@@ -37,12 +33,13 @@ final class HomeView: UIView {
             .layerMaxXMinYCorner
         ]
         $0.tableHeaderView = headerView
+        addSubview($0)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         setupDataSource()
-        layoutUI()
+        setupLayoutUI()
     }
 
     private func setupDataSource() {
@@ -67,20 +64,18 @@ final class HomeView: UIView {
             Int,
             HomeCategoryTableViewCellModel
         >()
-        snapshot.appendSections([Constants.section])
-        snapshot.appendItems(cellModels, toSection: Constants.section)
+        snapshot.appendSections([.zero])
+        snapshot.appendItems(cellModels, toSection: .zero)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
 
-    private func layoutUI() {
-        addSubview(tableView)
+    private func setupLayoutUI() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
 
     private enum Constants {
-        static let section = 0
         static let backgroundColor = UIColor(
             red: 251 / 255,
             green: 242 / 255,

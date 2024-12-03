@@ -24,7 +24,7 @@ final class HomeCategoryTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        layoutUI()
+        setupLayoutUI()
     }
 }
 
@@ -94,7 +94,7 @@ private extension HomeCategoryTableViewCell {
         )
     }
 
-    func layoutUI() {
+    func setupLayoutUI() {
 
         backgroundColor = .clear
 

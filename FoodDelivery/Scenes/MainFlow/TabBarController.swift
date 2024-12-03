@@ -63,9 +63,9 @@ private extension TabBarController {
             tag: page.pageOrderNumber
         )
 
-        let uiEdgeInsets = getInsetsForTabbarPage(page)
+        let tabbarPageInsets = getInsetsForTabbarPage(page)
 
-        navigationController.tabBarItem.imageInsets = uiEdgeInsets
+        navigationController.tabBarItem.imageInsets = tabbarPageInsets
 
         return navigationController
     }

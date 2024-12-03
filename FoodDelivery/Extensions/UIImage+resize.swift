@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIImage {
-
     func resize(_ height: CGFloat) -> UIImage {
         let heightRatio = height / size.height
 

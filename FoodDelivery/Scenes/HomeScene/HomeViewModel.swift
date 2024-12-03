@@ -33,10 +33,7 @@ extension HomeViewModel: IViewModelType {
         coordinator: Coordinates
     ) -> HomeViewModel {
 
-        let cellModels = CurrentValueSubject<
-            [HomeCategoryTableViewCellModel],
-            Never
-        >([])
+        let cellModels = CurrentValueSubject<[HomeCategoryTableViewCellModel], Never>([])
 
         let fetchCategories = dependency.homeCategoriesService
             .fetchCategories()
