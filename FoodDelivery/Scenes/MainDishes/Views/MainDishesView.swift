@@ -19,11 +19,9 @@ private enum Constants {
 
 final class MainDishesView: UIView {
     // MARK: - Properties
-
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
@@ -43,6 +41,11 @@ final class MainDishesView: UIView {
 
 private extension MainDishesView {
     func addSubviews() {
+        let subviews = [collectionView]
+        subviews.forEach {
+            addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         addSubview(collectionView)
     }
 

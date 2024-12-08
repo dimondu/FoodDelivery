@@ -12,11 +12,40 @@ import UIKit
 final class MainDishesViewController: UIViewController {
     // MARK: - Properties
 
-    private lazy var contentView = MainDishesView()
+    private lazy var contentView: MainDishesView = {
+        let view = MainDishesView()
+        view.collectionView.register(
+            MainDishesCollectionCell.self,
+            forCellWithReuseIdentifier: MainDishesCollectionCell.identifier
+        )
+        view.collectionView.delegate = self
+        view.collectionView.dataSource = self
+        return view
+    }()
 
     // MARK: - Overriden methods
 
     override func loadView() {
         view = contentView
     }
+}
+
+extension MainDishesViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2 // TODO: будет правиться
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1 // TODO: будет правиться
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // TODO: будет правиться
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDishesCollectionCell.identifier, for: indexPath)
+        return cell
+    }
+}
+
+extension MainDishesViewController: UICollectionViewDelegateFlowLayout {
+    // TODO: будет правиться
 }
