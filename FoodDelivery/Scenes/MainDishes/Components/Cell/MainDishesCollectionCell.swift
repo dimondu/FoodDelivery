@@ -40,7 +40,7 @@ final class MainDishesCollectionCell: UICollectionViewCell {
     private let button: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: Constants.Button.fontSize)
+        button.titleLabel?.font = UIFont(name: "Avenir-Light", size: Constants.Button.fontSize)
         button.backgroundColor = Constants.Button.backgroundColor
         button.layer.cornerRadius = Constants.Button.cornerRadius
         return button
@@ -56,7 +56,7 @@ final class MainDishesCollectionCell: UICollectionViewCell {
 
     private let label: UILabel = {
        let label = UILabel()
-        label.font = .systemFont(ofSize: Constants.Label.fontSize)
+        label.font = UIFont(name: "Avenir-Heavy", size: Constants.Label.fontSize)
         label.textAlignment = .center
         label.textColor = .black
         label.numberOfLines = .zero
@@ -82,7 +82,6 @@ private extension MainDishesCollectionCell {
         let subviews = [button, imageView, label]
         subviews.forEach {
             addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
 

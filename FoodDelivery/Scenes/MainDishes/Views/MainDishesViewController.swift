@@ -14,12 +14,8 @@ final class MainDishesViewController: UIViewController {
 
     private lazy var contentView: MainDishesView = {
         let view = MainDishesView()
-        view.collectionView.register(
-            MainDishesCollectionCell.self,
-            forCellWithReuseIdentifier: MainDishesCollectionCell.identifier
-        )
-        view.collectionView.delegate = self
-        view.collectionView.dataSource = self
+        view.delegate = self
+        view.dataSource = self
         return view
     }()
 
