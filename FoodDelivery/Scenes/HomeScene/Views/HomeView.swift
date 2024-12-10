@@ -28,10 +28,7 @@ final class HomeView: UIView {
         ))
         headerView.backgroundColor = Constants.backgroundColor
         headerView.layer.cornerRadius = Constants.headerViewCornerRadius
-        headerView.layer.maskedCorners = [
-            .layerMinXMinYCorner,
-            .layerMaxXMinYCorner
-        ]
+        headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         $0.tableHeaderView = headerView
         addSubview($0)
     }
@@ -60,10 +57,7 @@ final class HomeView: UIView {
     }
 
     func updateDataSource(with cellModels: [HomeCategoryTableViewCellModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<
-            Int,
-            HomeCategoryTableViewCellModel
-        >()
+        var snapshot = NSDiffableDataSourceSnapshot<Int, HomeCategoryTableViewCellModel>()
         snapshot.appendSections([.zero])
         snapshot.appendItems(cellModels, toSection: .zero)
         dataSource?.apply(snapshot, animatingDifferences: true)
@@ -89,14 +83,8 @@ final class HomeView: UIView {
 }
 
 extension HomeView: UITableViewDelegate {
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
-        guard let cellModel = dataSource?.itemIdentifier(for: indexPath)
-        else {
-            return
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cellModel = dataSource?.itemIdentifier(for: indexPath) else { return }
         didTapCell?(cellModel)
     }
 

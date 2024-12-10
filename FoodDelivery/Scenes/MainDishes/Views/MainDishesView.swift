@@ -20,10 +20,16 @@ private enum Constants {
 final class MainDishesView: UIView {
     // MARK: - Properties
 
+    weak var dataSource: UICollectionViewDataSource?
+    weak var delegate: UICollectionViewDelegate?
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(
+            MainDishesCollectionCell.self,
+            forCellWithReuseIdentifier: MainDishesCollectionCell.identifier
+        )
         return collectionView
     }()
 
@@ -43,7 +49,10 @@ final class MainDishesView: UIView {
 
 private extension MainDishesView {
     func addSubviews() {
-        addSubview(collectionView)
+        let subviews = [collectionView]
+        subviews.forEach {
+            addSubview($0)
+        }
     }
 
     func setupConstraints() {
