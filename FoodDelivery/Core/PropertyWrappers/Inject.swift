@@ -7,6 +7,7 @@
 
 import Swinject
 
+// swiftlint:disable force_unwrapping
 @propertyWrapper
 struct Inject<Component> {
 
@@ -16,3 +17,4 @@ struct Inject<Component> {
         self.wrappedValue = Assembler.default.resolver.resolve(Component.self)!
     }
 }
+// swiftlint:enable force_unwrapping
