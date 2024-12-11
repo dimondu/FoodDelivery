@@ -22,7 +22,7 @@ extension HomeCategoriesAPI: TargetType {
     var path: String {
         switch self {
         case .fetchCategories:
-            "/categories"
+            "/api/categories"
         }
     }
 
