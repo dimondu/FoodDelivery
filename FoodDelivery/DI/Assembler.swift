@@ -29,8 +29,8 @@ extension Assembler {
 
     private static var allAssemblies: [Assembly] {
         [
-            HomeSceneAssembly()
-            // Сюда добавлять Assembly модулей
+            HomeSceneAssembly(),
+            MainDishesAssembly()
         ]
     }
 }

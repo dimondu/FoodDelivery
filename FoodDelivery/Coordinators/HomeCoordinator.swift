@@ -31,4 +31,8 @@ final class HomeCoordinator: ICoordinator {
     func showDishListScene() {
         print("Показ экрана со списком блюд")
     }
+
+    func showDishDetail() {
+        print("Показ экрана детальной информации")
+    }
 }
