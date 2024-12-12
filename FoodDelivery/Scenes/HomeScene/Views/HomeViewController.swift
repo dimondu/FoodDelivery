@@ -13,7 +13,6 @@ final class HomeViewController: UIViewController {
     // MARK: - Private properties
 
     private let didTapCell = PassthroughSubject<HomeCategoryTableViewCellModel, Never>()
-    private let isLoading = CurrentValueSubject<Bool, Never>(false)
     private var cancellables = Set<AnyCancellable>()
 
     private var contentView = HomeView()
@@ -22,16 +21,6 @@ final class HomeViewController: UIViewController {
 
     override func loadView() {
         view = contentView
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        contentView.setupBindings(
-            .init(
-                didTapCell: didTapCell.send,
-                isLoading: isLoading.eraseToAnyPublisher()
-            )
-        )
     }
 
     override func viewIsAppearing(_ animated: Bool) {
@@ -48,14 +37,17 @@ extension HomeViewController: IViewType {
     }
 
     func bind(to viewModel: ViewModel) {
+        contentView.setupBindings(
+            .init(
+                didTapCell: didTapCell.send,
+                isLoading: viewModel.isLoading
+            )
+        )
+    
         viewModel.cellModels
             .sink { [weak self] models in
                 self?.contentView.updateDataSource(with: models)
             }
-            .store(in: &cancellables)
-
-        viewModel.isLoading
-            .sink(receiveValue: isLoading.send)
             .store(in: &cancellables)
 
         viewModel.cancellables
