@@ -9,6 +9,39 @@ import Kingfisher
 import SnapKit
 import UIKit
 
+private enum Constants {
+    static let identifier = "HomeCategoryTableViewCell"
+    static let pictureStubName = "photo"
+    static let imageViewCornerRadius = CGFloat(28)
+    static let titleFont = UIFont(name: "Avenir-Heavy", size: 20)
+    static let descriptionFont = UIFont(name: "Avenir-Book", size: 16)
+    static let offerBackground = UIColor(
+        red: 203 / 255,
+        green: 57 / 255,
+        blue: 63 / 255,
+        alpha: 1
+    )
+    static let offerCornerRadius = CGFloat(16)
+    static let offerFont = UIFont(name: "Avenir-Heavy", size: 18)
+    static let offerInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+    static let redTextColor = UIColor(
+        red: 232 / 255,
+        green: 67 / 255,
+        blue: 73 / 255,
+        alpha: 1
+    )
+    static let grayTextColor = UIColor(
+        red: 96 / 255,
+        green: 85 / 255,
+        blue: 86 / 255,
+        alpha: 1
+    )
+    static let margin = CGFloat(16)
+    static let halMargin = CGFloat(8)
+    static let imageMargin = CGFloat(28)
+    static let imageHeight = CGFloat(210)
+}
+
 final class HomeCategoryTableViewCell: UITableViewCell {
     static var identifier = Constants.identifier
 
@@ -32,14 +65,13 @@ extension HomeCategoryTableViewCell: ICell {
     typealias CellModel = HomeCategoryTableViewCellModel
 
     func configure(with model: CellModel) {
-        ui.activityIndicator.startAnimating()
         ui.titleLabel.text = model.title
-        if let url = URL(string: model.imageUrl) {
-            ui.imageView.kf.setImage(with: url) { [weak self] _ in
-                self?.ui.activityIndicator.stopAnimating()
-            }
-        }
-        ui.activityIndicator.stopAnimating()
+        let placeholderImage = UIImage(systemName: Constants.pictureStubName)
+        ui.imageView.setImage(
+            with: model.imageUrl,
+            placeholder: placeholderImage,
+            acivityIndacator: ui.activityIndicator
+        )
         ui.promotionalOfferView.text = model.promotionalOffer
         let attributedDescription = createAttributedDescription(
             rating: model.rating,
@@ -126,38 +158,6 @@ private extension HomeCategoryTableViewCell {
             make.trailing.equalTo(ui.titleLabel.snp.trailing)
             make.top.equalTo(ui.titleLabel.snp.bottom).offset(Constants.margin)
         }
-    }
-
-    enum Constants {
-        static let identifier = "HomeCategoryTableViewCell"
-        static let imageViewCornerRadius = CGFloat(28)
-        static let titleFont = UIFont(name: "Avenir-Heavy", size: 20)
-        static let descriptionFont = UIFont(name: "Avenir-Book", size: 16)
-        static let offerBackground = UIColor(
-            red: 203 / 255,
-            green: 57 / 255,
-            blue: 63 / 255,
-            alpha: 1
-        )
-        static let offerCornerRadius = CGFloat(16)
-        static let offerFont = UIFont(name: "Avenir-Heavy", size: 18)
-        static let offerInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        static let redTextColor = UIColor(
-            red: 232 / 255,
-            green: 67 / 255,
-            blue: 73 / 255,
-            alpha: 1
-        )
-        static let grayTextColor = UIColor(
-            red: 96 / 255,
-            green: 85 / 255,
-            blue: 86 / 255,
-            alpha: 1
-        )
-        static let margin = CGFloat(16)
-        static let halMargin = CGFloat(8)
-        static let imageMargin = CGFloat(28)
-        static let imageHeight = CGFloat(210)
     }
 }
 

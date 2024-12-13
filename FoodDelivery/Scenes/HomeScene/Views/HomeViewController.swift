@@ -10,24 +10,17 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
+    // MARK: - Private properties
+
     private let didTapCell = PassthroughSubject<HomeCategoryTableViewCellModel, Never>()
     private var cancellables = Set<AnyCancellable>()
 
-    private lazy var homeView = HomeView().setup {
-        $0.didTapCell = { [weak self] cellModel in
-            self?.didTapCell.send(cellModel)
-        }
-        view.addSubview($0)
-    }
+    private var contentView = HomeView()
 
-    private lazy var activityIndicator = UIActivityIndicatorView().setup {
-        $0.style = .medium
-        view.addSubview($0)
-    }
+    // MARK: - Lifecycle
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setupLayoutUI()
+    override func loadView() {
+        view = contentView
     }
 
     override func viewIsAppearing(_ animated: Bool) {
@@ -44,32 +37,20 @@ extension HomeViewController: IViewType {
     }
 
     func bind(to viewModel: ViewModel) {
-
+        contentView.setupBindings(
+            .init(
+                didTapCell: didTapCell.send,
+                isLoading: viewModel.isLoading
+            )
+        )
+    
         viewModel.cellModels
             .sink { [weak self] models in
-                self?.homeView.updateDataSource(with: models)
-            }
-            .store(in: &cancellables)
-
-        viewModel.isLoading
-            .sink { [weak self] isLoading in
-                isLoading
-                    ? self?.activityIndicator.startAnimating()
-                    : self?.activityIndicator.stopAnimating()
+                self?.contentView.updateDataSource(with: models)
             }
             .store(in: &cancellables)
 
         viewModel.cancellables
             .forEach { $0.store(in: &cancellables) }
-    }
-
-    func setupLayoutUI() {
-        homeView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-
-        activityIndicator.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
     }
 }
