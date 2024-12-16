@@ -150,13 +150,13 @@ private extension HomeCategoryTableViewCell {
         ui.titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(ui.imageView.snp.leading)
             make.trailing.equalTo(ui.imageView.snp.trailing)
-            make.top.equalTo(ui.imageView.snp.bottom).offset(Constants.margin)
+            make.top.equalTo(ui.imageView.snp.bottom).offset(Constants.halMargin)
         }
 
         ui.desriptionLabel.snp.makeConstraints { make in
             make.leading.equalTo(ui.titleLabel.snp.leading)
             make.trailing.equalTo(ui.titleLabel.snp.trailing)
-            make.top.equalTo(ui.titleLabel.snp.bottom).offset(Constants.margin)
+            make.top.equalTo(ui.titleLabel.snp.bottom)
         }
     }
 }

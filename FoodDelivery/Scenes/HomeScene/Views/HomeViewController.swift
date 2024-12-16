@@ -43,7 +43,7 @@ extension HomeViewController: IViewType {
                 isLoading: viewModel.isLoading
             )
         )
-    
+
         viewModel.cellModels
             .sink { [weak self] models in
                 self?.contentView.updateDataSource(with: models)
