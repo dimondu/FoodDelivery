@@ -1,5 +1,5 @@
 //
-//  MainDishesViewController.swift
+//  DishesViewController.swift
 //  FoodDelivery
 //
 //  Created by Дмитрий Дуров on 05.12.2024.
@@ -8,17 +8,17 @@
 import Combine
 import UIKit
 
-// MARK: - MainDishesViewController
+// MARK: - DishesViewController
 
-final class MainDishesViewController: UIViewController {
+final class DishesViewController: UIViewController {
     // MARK: - Properties
 
-    private let didTapBuyButton = PassthroughSubject<MainDishesCollectionCellModel, Never>()
-    private let didTapCell = PassthroughSubject<MainDishesCollectionCellModel, Never>()
+    private let didTapBuyButton = PassthroughSubject<DishesCollectionCellModel, Never>()
+    private let didTapCell = PassthroughSubject<DishesCollectionCellModel, Never>()
     private var cancellables = Set<AnyCancellable>()
 
-    private lazy var contentView: MainDishesView = {
-        let view = MainDishesView()
+    private lazy var contentView: DishesView = {
+        let view = DishesView()
         view.delegate = self
         view.dataSource = self
         return view
@@ -31,8 +31,8 @@ final class MainDishesViewController: UIViewController {
     }
 }
 
-extension MainDishesViewController: IViewType {
-    typealias ViewModel = MainDishesViewModel
+extension DishesViewController: IViewType {
+    typealias ViewModel = DishesViewModel
 
     var bindings: ViewModel.Bindings {
         .init(
@@ -46,7 +46,7 @@ extension MainDishesViewController: IViewType {
     }
 }
 
-extension MainDishesViewController: UICollectionViewDataSource {
+extension DishesViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         2 // TODO: будет правиться
     }
@@ -57,11 +57,11 @@ extension MainDishesViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // TODO: будет правиться
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDishesCollectionCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCollectionCell.identifier, for: indexPath)
         return cell
     }
 }
 
-extension MainDishesViewController: UICollectionViewDelegate {
+extension DishesViewController: UICollectionViewDelegate {
     // TODO: будет правиться
 }

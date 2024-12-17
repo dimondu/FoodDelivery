@@ -30,7 +30,7 @@ extension Assembler {
     private static var allAssemblies: [Assembly] {
         [
             HomeSceneAssembly(),
-            MainDishesAssembly()
+            DishesAssembly()
         ]
     }
 }

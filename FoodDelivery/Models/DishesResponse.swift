@@ -1,11 +1,11 @@
 //
-//  MainDishesResponse.swift
+//  DishesResponse.swift
 //  FoodDelivery
 //
 //  Created by Дмитрий Дуров on 10.12.2024.
 //
 
-struct MainDishesResponse: Decodable {
+struct DishesResponse: Decodable {
     /// Идентификатор
     let id: String
     /// Cсылка на изображение

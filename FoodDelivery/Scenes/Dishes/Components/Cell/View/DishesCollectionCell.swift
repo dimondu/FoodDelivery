@@ -1,5 +1,5 @@
 //
-//  MainDishesCollectionCell.swift
+//  DishesCollectionCell.swift
 //  FoodDelivery
 //
 //  Created by Дмитрий Дуров on 06.12.2024.
@@ -15,6 +15,7 @@ private enum Constants {
         static let backgroundColor = UIColor(red: 255, green: 120, blue: 91, alpha: 1)
         static let cornerRadius: CGFloat = 6
         static let fontSize: CGFloat = 8
+        static let title = "Buy Now"
     }
     enum Label {
         static let bottomOffset: CGFloat = 15
@@ -26,13 +27,13 @@ private enum Constants {
         static let height: CGFloat = 117
         static let topOffset: CGFloat = 15
     }
-    static let identifier = "MainDishesCollectionCell"
+    static let identifier = "DishesCollectionCell"
     static let horizontalOffset: CGFloat = 16
 }
 
-// MARK: - MainDishesCollectionCell
+// MARK: - DishesCollectionCell
 
-final class MainDishesCollectionCell: UICollectionViewCell {
+final class DishesCollectionCell: UICollectionViewCell {
     // MARK: - Properties
 
     static let identifier = Constants.identifier
@@ -43,6 +44,8 @@ final class MainDishesCollectionCell: UICollectionViewCell {
         button.titleLabel?.font = UIFont(name: "Avenir-Light", size: Constants.Button.fontSize)
         button.backgroundColor = Constants.Button.backgroundColor
         button.layer.cornerRadius = Constants.Button.cornerRadius
+        button.setTitle(Constants.Button.title, for: .normal)
+        button.addTarget(DishesCollectionCell.self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -77,7 +80,13 @@ final class MainDishesCollectionCell: UICollectionViewCell {
     }
 }
 
-private extension MainDishesCollectionCell {
+private extension DishesCollectionCell {
+    @objc func buttonTapped(_ sender: UIButton) {
+        print("Кнопка нажата!")
+    }
+}
+
+private extension DishesCollectionCell {
     func addSubviews() {
         let subviews = [button, imageView, label]
         subviews.forEach {
