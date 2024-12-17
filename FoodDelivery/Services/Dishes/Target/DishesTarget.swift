@@ -1,5 +1,5 @@
 //
-//  MainDishesTarget.swift
+//  DishesTarget.swift
 //  FoodDelivery
 //
 //  Created by Дмитрий Дуров on 10.12.2024.
@@ -8,11 +8,11 @@
 import Foundation
 import Moya
 
-enum MainDishesTarget {
-    case mainDishes
+enum DishesTarget {
+    case dishes
 }
 
-extension MainDishesTarget: TargetType {
+extension DishesTarget: TargetType {
     /// Возвращает базовую часть URL для запроса
     var baseURL: URL {
         URL(string: "http://127.0.0.1:8080")! // swiftlint:disable:this force_unwrapping
@@ -21,15 +21,15 @@ extension MainDishesTarget: TargetType {
     /// Путь
     var path: String {
         switch self {
-        case .mainDishes:
-            "/mainDishes"
+        case .dishes:
+            "/Dishes"
         }
     }
 
     /// HTTP Метод
     var method: Moya.Method {
         switch self {
-        case .mainDishes:
+        case .dishes:
                 .get
         }
     }
@@ -37,7 +37,7 @@ extension MainDishesTarget: TargetType {
     /// HTTP таска
     var task: Moya.Task {
         switch self {
-        case .mainDishes:
+        case .dishes:
                 .requestPlain
         }
     }

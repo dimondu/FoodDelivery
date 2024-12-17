@@ -1,5 +1,5 @@
 //
-//  MainDishesView.swift
+//  DishesView.swift
 //  FoodDelivery
 //
 //  Created by Дмитрий Дуров on 04.12.2024.
@@ -15,9 +15,9 @@ private enum Constants {
     static let minimumLineSpacing: CGFloat = 15
 }
 
-// MARK: - MainDishesView
+// MARK: - DishesView
 
-final class MainDishesView: UIView {
+final class DishesView: UIView {
     // MARK: - Properties
 
     weak var dataSource: UICollectionViewDataSource?
@@ -27,8 +27,8 @@ final class MainDishesView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
         collectionView.register(
-            MainDishesCollectionCell.self,
-            forCellWithReuseIdentifier: MainDishesCollectionCell.identifier
+            DishesCollectionCell.self,
+            forCellWithReuseIdentifier: DishesCollectionCell.identifier
         )
         return collectionView
     }()
@@ -47,7 +47,7 @@ final class MainDishesView: UIView {
     }
 }
 
-private extension MainDishesView {
+private extension DishesView {
     func addSubviews() {
         let subviews = [collectionView]
         subviews.forEach {

@@ -1,5 +1,5 @@
 //
-//  MainDishesViewModel.swift
+//  DishesViewModel.swift
 //  FoodDelivery
 //
 //  Created by Дмитрий Дуров on 10.12.2024.
@@ -7,23 +7,23 @@
 
 import Combine
 
-struct MainDishesViewModel {
-    let cellModels: AnyPublisher<[MainDishesCollectionCellModel], Never>
+struct DishesViewModel {
+    let cellModels: AnyPublisher<[DishesCollectionCellModel], Never>
     let cancellables: [AnyCancellable]
     let isLoading: AnyPublisher<Bool, Never>
 }
 
-extension MainDishesViewModel: IViewModelType {
+extension DishesViewModel: IViewModelType {
     typealias Coordinates = HomeCoordinator
 
     struct Bindings {
-        let didTapCell: AnyPublisher<MainDishesCollectionCellModel, Never>
-        let didTapBuyButton: AnyPublisher<MainDishesCollectionCellModel, Never>
+        let didTapCell: AnyPublisher<DishesCollectionCellModel, Never>
+        let didTapBuyButton: AnyPublisher<DishesCollectionCellModel, Never>
     }
 
     struct Dependencies {
-        let mainDishesService: IMainDishesService
-        let mapper: IMainDishesMapper
+        let dishesService: IDishesService
+        let mapper: IDishesMapper
     }
 
     static func configure(
@@ -31,11 +31,11 @@ extension MainDishesViewModel: IViewModelType {
         binding: Bindings,
         dependency: Dependencies,
         coordinator: Coordinates
-    ) -> MainDishesViewModel {
-        let cellModels = CurrentValueSubject<[MainDishesCollectionCellModel], Never>([])
+    ) -> DishesViewModel {
+        let cellModels = CurrentValueSubject<[DishesCollectionCellModel], Never>([])
 
-        let mainDishes = dependency.mainDishesService
-            .loadMainDishes()
+        let dishes = dependency.dishesService
+            .loadDishes()
             .map { dependency.mapper.mapDishesCollectionCellModels(from: $0) }
             .sink(receiveValue: { cellModels.send($0) })
 
@@ -51,7 +51,7 @@ extension MainDishesViewModel: IViewModelType {
 
         return .init(
             cellModels: cellModels.eraseToAnyPublisher(),
-            cancellables: [mainDishes, showDishDetail],
+            cancellables: [dishes, showDishDetail],
             isLoading: isLoading
         )
     }

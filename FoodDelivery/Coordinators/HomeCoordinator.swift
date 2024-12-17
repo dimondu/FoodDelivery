@@ -29,7 +29,8 @@ final class HomeCoordinator: ICoordinator {
     }
 
     func showDishListScene() {
-        print("Показ экрана со списком блюд")
+        let viewController = DishesBuilder().build(coordinator: self, ())
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showDishDetail() {
