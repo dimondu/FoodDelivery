@@ -13,7 +13,7 @@ struct HomeViewUI {
     let titleLabel: UILabel
     let subtitleLabel: UILabel
     let searchTextField: UISearchTextField
-    let tableView: UITableView
     let tableHeaderView: UIView
+    let tableView: UITableView
     let activityIndicator: UIActivityIndicatorView
 }
