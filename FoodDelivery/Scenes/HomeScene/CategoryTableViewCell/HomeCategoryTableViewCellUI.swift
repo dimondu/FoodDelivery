@@ -8,9 +8,9 @@
 import UIKit
 
 struct HomeCategoryTableViewCellUI {
-    let imageView: UIImageView
+    let mainImageView: UIImageView
     let titleLabel: UILabel
     let desriptionLabel: UILabel
-    let promotionalOfferView: LabelWithBackgroundView
+    let promotionView: LabelWithBackgroundView
     let activityIndicator: UIActivityIndicatorView
 }
